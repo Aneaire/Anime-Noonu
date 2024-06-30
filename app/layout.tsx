@@ -1,4 +1,5 @@
 import Sidebar from "@/components/common/Sidebar";
+import QueryProvider from "@/utils/react-query/QueryProvider";
 import {
   Jolly_Lodger,
   Kaisei_Tokumin,
@@ -54,9 +55,9 @@ export default function RootLayout({
       <body className="bg-background text-foreground">
         <main className="min-h-screen flex min-w-screen overflow-x-hidden">
           <Sidebar />
-          {/* <QueryProvider> */}
-          <section className=" w-full px-2 lg:px-5 pb-5">{children}</section>
-          {/* </QueryProvider> */}
+          <QueryProvider>
+            <section className=" w-full px-2 lg:px-5 pb-5">{children}</section>
+          </QueryProvider>
         </main>
       </body>
     </html>

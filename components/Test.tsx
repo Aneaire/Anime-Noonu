@@ -1,13 +1,8 @@
-"use client";
-
-import { getHomeAnime } from "@/utils/hianimeAPI/api";
-import { useEffect } from "react";
+import { useGetHomeAnime } from "@/utils/react-query/query";
 
 const Test = () => {
-  useEffect(() => {
-    const data = getHomeAnime();
-    console.log(data);
-  }, []);
+  const { data } = useGetHomeAnime();
+  console.log(data);
   return <div>Test me baby</div>;
 };
 
