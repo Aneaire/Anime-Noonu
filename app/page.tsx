@@ -1,3 +1,4 @@
+import Test from "@/components/Test";
 import { LogoTitle } from "@/components/icons";
 
 export default async function Index() {
@@ -21,6 +22,7 @@ export default async function Index() {
         <LogoTitle />
       </span>
       {/* <Home /> */}
+      <Test />
     </div>
   );
 }
