@@ -1,3 +1,5 @@
+"use client";
+
 import { useGetHomeAnime } from "@/utils/react-query/query";
 
 const Test = () => {
