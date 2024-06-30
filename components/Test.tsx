@@ -1,14 +1,19 @@
 "use client";
 
-import { useGetHomeAnime } from "@/utils/react-query/query";
+import { useTest } from "@/utils/react-query/query";
+import { Button } from "./ui/button";
 
 const Test = () => {
-  const { data, isLoading } = useGetHomeAnime();
+  const { mutate: getEpisode, data, isPending } = useTest();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isPending) return <div>Loading...</div>;
 
-  console.log(data);
-  return <div>Test me baby</div>;
+  console.log("test", data);
+  return (
+    <Button onClick={() => getEpisode("go-go-loser-ranger-19139")}>
+      Get Episode
+    </Button>
+  );
 };
 
 export default Test;

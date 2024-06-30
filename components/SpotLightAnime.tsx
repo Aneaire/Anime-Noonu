@@ -12,11 +12,8 @@ const SpotlightCards = ({
   episodes,
   otherInfo,
 }: ISpotLight) => {
-  const desc =
-    "Haruka Sakura wants nothing to do with weaklings—he's only interested in the strongest of the strong. He's just started at Furin High School, a school of degenerates known only for their brawling strength—strength they use to protect their town from anyone who wishes it ill, Where the average scores are the lowest, but the fights are the strongest. Furin High School is renowned as a super school of delinquents. Haruka Sakura, a first-year student, came from outside the city to fight to the top. However, Furin High School  become a group that protects the town called the “Chime of the Wind Breaker” Bofurin.";
-
   return (
-    <div className=" w-full h-[65vh] flex flex-col relative overflow-hidden">
+    <div className=" select-none w-full h-[65vh] flex flex-col relative overflow-hidden">
       <div className=" mt-auto bg-background/10 ">
         <p className=" font-jolly font-normal text-4xl text-btn-background">
           # SpotLight {rank}
@@ -42,10 +39,11 @@ const SpotlightCards = ({
           <div className="mt-5 radial-gradient w-[100%] h-[150%] relative bg-background">
             <Image
               fill
-              sizes="100vw"
+              sizes="2000px"
               alt="top anime"
               className="-z-10 object-cover"
               src={poster}
+              priority
             />
           </div>
         </div>

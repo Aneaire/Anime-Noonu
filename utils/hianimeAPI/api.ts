@@ -1,27 +1,27 @@
 import { IHiAnimeHome } from "@/types/hiAnime";
-
-const baseUrl = "https://hianime.p.rapidapi.com";
+import axios from "axios";
 
 export const getHomeAnime = async () => {
   try {
-    const res = await fetch(`${baseUrl}/anime/home`, {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "63790a5d20msha43e49feb7854bdp1c2950jsn66548ec4ee65",
-        "x-rapidapi-host": "hianime.p.rapidapi.com",
-      },
-      next: {
-        revalidate: 604800,
-      },
-    });
+    const res = await fetch("/api/hianime");
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
     const data = await res.json();
-    console.log(data);
+
     return data as IHiAnimeHome;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const test = async (id: string) => {
+  try {
+    const res = await axios.get("/api/hianime/episode/" + id);
+
+    return res.data;
+  } catch (error) {
+    console.error(error);
   }
 };

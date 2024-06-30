@@ -1,5 +1,5 @@
 import Test from "@/components/Test";
-import { LogoTitle } from "@/components/icons";
+import { Logo, LogoTitle } from "@/components/icons";
 import Home from "@/components/page/Home";
 
 export default async function Index() {
@@ -19,7 +19,9 @@ export default async function Index() {
 
   return (
     <div className="w-full relative">
-      <span className=" absolute top-4 left-5">
+      <span className=" scale-90 flex items-center gap-5 absolute top-4 left-5">
+        <Logo />
+        {"  "}
         <LogoTitle />
       </span>
       <Home />

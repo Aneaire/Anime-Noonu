@@ -1,13 +1,20 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { getHomeAnime } from "../hianimeAPI/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getHomeAnime, test } from "../hianimeAPI/api";
 import { QUERY_KEYS } from "./QUERY_KEYS";
 
 export const useGetHomeAnime = () => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_HOME_ANIME],
     queryFn: getHomeAnime,
+  });
+};
+
+export const useTest = () => {
+  return useMutation({
+    mutationFn: (id: string) => test(id),
+    mutationKey: [QUERY_KEYS.TEST],
   });
 };
 
