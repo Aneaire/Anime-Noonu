@@ -1,5 +1,6 @@
 import Test from "@/components/Test";
 import { LogoTitle } from "@/components/icons";
+import Home from "@/components/page/Home";
 
 export default async function Index() {
   // const canInitSupabaseClient = () => {
@@ -21,7 +22,7 @@ export default async function Index() {
       <span className=" absolute top-4 left-5">
         <LogoTitle />
       </span>
-      {/* <Home /> */}
+      <Home />
       <Test />
     </div>
   );
