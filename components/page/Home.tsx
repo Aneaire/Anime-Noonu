@@ -1,15 +1,16 @@
 "use client";
 
 import { useGetHomeAnime } from "@/utils/react-query/query";
-// import emblaCarouselAutoplay from "embla-carousel-autoplay";
+import emblaCarouselAutoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 import AnimeCard from "../AnimeCard";
 import SpotlightCards from "../SpotLightAnime";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 const Home = () => {
-  // const plugin = useRef(
-  //   emblaCarouselAutoplay({ delay: 6000, stopOnInteraction: true })
-  // );
+  const plugin = useRef(
+    emblaCarouselAutoplay({ delay: 6000, stopOnInteraction: true })
+  );
   const { data: homeAnime, isLoading, isError } = useGetHomeAnime();
 
   if (isLoading)
@@ -24,7 +25,7 @@ const Home = () => {
     <div className=" w-full">
       <Carousel
         opts={{ loop: true }}
-        // plugins={[plugin.current]}
+        plugins={[plugin.current]}
         className=" w-full border-none"
       >
         <CarouselContent>
