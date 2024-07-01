@@ -141,3 +141,27 @@ export type IBasicCardContent = {
   title?: string;
   poster: string;
 };
+
+// Stream
+
+export type IStream = {
+  anilistID: number;
+  intro: {
+    start: number;
+    end: number;
+  };
+  malID: number;
+  outro: {
+    start: number;
+    end: number;
+  };
+  sources: ISource[];
+  tracks: ITracks[];
+};
+
+export type ISource = {
+  url: string;
+  type: string;
+};
+
+export type ITracks = { file: string; label: string; kind: string };

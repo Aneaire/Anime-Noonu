@@ -1,7 +1,13 @@
 "use client";
 
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { getEpisodes, getHomeAnime, getInfo, test } from "../hianimeAPI/api";
+import {
+  getEpisodes,
+  getHomeAnime,
+  getInfo,
+  getStreamInfo,
+  test,
+} from "../hianimeAPI/api";
 import { QUERY_KEYS } from "./QUERY_KEYS";
 
 export const useGetHomeAnime = () => {
@@ -13,22 +19,29 @@ export const useGetHomeAnime = () => {
 
 export const useGetInfo = (id: string) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.GET_INFO],
+    queryKey: [QUERY_KEYS.GET_INFO + id],
     queryFn: () => getInfo(id),
   });
 };
 
 export const useGetEpisodes = (id: string) => {
   return useQuery({
-    queryKey: [QUERY_KEYS.GET_EPISODES],
+    queryKey: [QUERY_KEYS.GET_EPISODES + id],
     queryFn: () => getEpisodes(id),
+  });
+};
+
+export const useGetStreamInfo = () => {
+  return useMutation({
+    mutationFn: (id: string) => getStreamInfo(id),
+    mutationKey: [QUERY_KEYS.GET_STREAM],
   });
 };
 
 export const useTest = () => {
   return useMutation({
     mutationFn: (id: string) => test(id),
-    mutationKey: [QUERY_KEYS.TEST],
+    mutationKey: [QUERY_KEYS.TEST + "test"],
   });
 };
 

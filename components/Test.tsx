@@ -10,7 +10,14 @@ const Test = () => {
 
   console.log("test", data);
   return (
-    <Button onClick={() => getEpisode("go-go-loser-ranger-19139")}>
+    <Button
+      onClick={() =>
+        getEpisode(
+          "my-hero-academia-season-7-19146?ep=125711&server=hd-1&sub=sub"
+          // "classroom-of-the-elite-iii-18880?ep=114913"
+        )
+      }
+    >
       Get Episode
     </Button>
   );

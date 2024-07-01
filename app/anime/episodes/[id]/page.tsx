@@ -3,23 +3,33 @@
 import Divider from "@/components/common/Divider";
 import DisplayEpisodes from "@/components/common/Episodes";
 import { GreenBadge, NormalBadge, RedBadge } from "@/components/common/badge";
-import { useGetEpisodes, useGetInfo } from "@/utils/react-query/query";
+import {
+  useGetEpisodes,
+  useGetInfo,
+  useGetStreamInfo,
+} from "@/utils/react-query/query";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Episodes = () => {
   const router = useParams();
   const { id } = router as { id: string };
 
+  const playerRef = useRef<HTMLVideoElement>(null);
+  const [selectedEp, setSelectedEp] = useState("");
   const [viewDesc, setViewDesc] = useState(false);
 
   const { data: info, isLoading: infoLoading } = useGetInfo(id);
   const { data: episodes, isLoading: episodesLoading } = useGetEpisodes(id);
+  const { mutate: getStreamInfo, data: streamInfo } = useGetStreamInfo();
 
   if (infoLoading && episodesLoading) {
     return <div>Loading...</div>;
   }
+
+  console.log("streamInfo", streamInfo);
+  console.log("selectedEp", selectedEp);
 
   return (
     <div className=" w-full  pt-5 min-h-screen ">
@@ -65,10 +75,13 @@ const Episodes = () => {
 
       {/* Episodes */}
       {episodes && (
-        <section className=" flex w-full">
-          <div className=" section-padding space-y-2 mt-5 basis-10/12">
+        <section className=" flex w-full mt-20">
+          <div className=" section-padding space-y-2  w-[30%]">
             {episodes?.episodes.map((episode) => (
               <DisplayEpisodes
+                getStreamInfo={getStreamInfo}
+                setSelectedEp={setSelectedEp}
+                selectedEp={selectedEp}
                 key={episode.episodeId}
                 number={episode.number}
                 title={episode.title}
@@ -77,7 +90,7 @@ const Episodes = () => {
               />
             ))}
           </div>
-          <div></div>
+          <div className=" w-full overflow-hidden rounded"></div>
         </section>
       )}
     </div>

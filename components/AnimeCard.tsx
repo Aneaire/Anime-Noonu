@@ -1,7 +1,10 @@
 import { ITrending } from "@/types/hiAnime";
 import Image from "next/image";
+import { useState } from "react";
 
 const AnimeCard = ({ rank, name, poster, id }: ITrending) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const nameSliced =
     name.length > 20 ? name.slice(0, 18) + ".." : name.slice(0, 20);
   const formattedRank = rank.toString().padStart(2, "0");
@@ -14,7 +17,7 @@ const AnimeCard = ({ rank, name, poster, id }: ITrending) => {
           {nameSliced}
         </span>
       </div>
-      <div className=" bg-black ">
+      <div className={` bg-slate-800 ${imageLoaded ? "" : " animate-pulse"}`}>
         <div className=" w-[200px] h-[300px] relative object-cover">
           <Image
             draggable={false}
@@ -22,6 +25,7 @@ const AnimeCard = ({ rank, name, poster, id }: ITrending) => {
             alt={name}
             fill
             sizes="2000px"
+            onLoadingComplete={() => setImageLoaded(true)}
           />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { IEpisodes, IHiAnimeHome, IInfo } from "@/types/hiAnime";
+import { IEpisodes, IHiAnimeHome, IInfo, IStream } from "@/types/hiAnime";
 import axios from "axios";
 
 export const getHomeAnime = async () => {
@@ -36,9 +36,19 @@ export const getEpisodes = async (id: string) => {
   }
 };
 
+export const getStreamInfo = async (id: string) => {
+  try {
+    const res = await axios.get("/api/hianime/stream/" + id);
+
+    return res.data as IStream;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const test = async (id: string) => {
   try {
-    const res = await axios.get("/api/hianime/episode/" + id);
+    const res = await axios.get("/api/hianime/stream/" + id);
 
     return res.data;
   } catch (error) {
