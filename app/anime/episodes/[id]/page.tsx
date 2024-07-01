@@ -21,6 +21,7 @@ const Episodes = () => {
     return <div>Loading...</div>;
   }
   console.log(episodes);
+  console.log(info);
   return (
     <div className=" w-full  pt-5 ">
       <div className="flex flex-col sm:flex-row gap-5 w-full section-container flex-wrap">
@@ -74,6 +75,7 @@ const Episodes = () => {
             />
           ))}
         </div>
+        <div></div>
       </section>
     </div>
   );
