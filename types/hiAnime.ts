@@ -23,7 +23,7 @@ export type ISpotLight = {
   description: string;
   poster: string;
   jname: string;
-  episodes: IEpisodes;
+  episodes: IEpisodesType;
   otherInfo: [0, 1, 2, 3];
 };
 
@@ -34,7 +34,7 @@ export type ILatestEpisode = {
   duration: string;
   type: string;
   rating: string | null;
-  episodes: IEpisodes;
+  episodes: IEpisodesType;
 };
 
 export type ITopUpcoming = {
@@ -44,7 +44,7 @@ export type ITopUpcoming = {
   duration: string;
   type: string;
   rating: string | null;
-  episodes: IEpisodes;
+  episodes: IEpisodesType;
   otherInfo: [];
 };
 
@@ -66,12 +66,78 @@ export type IBasicInfo = {
   rank: number;
   name: string;
   poster: string;
-  episodes: IEpisodes;
+  episodes: IEpisodesType;
 };
 
-export type IEpisodes = {
+export type IEpisodesType = {
   sub: number;
   dub: number;
 };
 
+// EPISODES
+
+export type IEpisodes = {
+  episodes: IEpisode[];
+  totalEpisodes: number;
+};
+
+export type IEpisode = {
+  episodeId: string;
+  isFiller: boolean;
+  number: number;
+  title: string;
+};
+
 export type IGenre = string;
+
+// INFO
+
+export type IInfo = {
+  anime: { info: IAnimeInfo; moreInfo: IAnimeMoreInfo };
+  mostPopularAnimes: IBasicCardContent[];
+  recommendedAnimes: IBasicCardContent[];
+  relatedAnimes: IBasicCardContent[];
+  seasons: unknown[];
+};
+
+export type IAnimeInfo = {
+  id: string;
+  anilistId: number;
+  description: string;
+  charactersVoiceActors: [];
+  malId: number;
+  name: string;
+  poster: string;
+  promotionalVideos: [];
+  stats: IStats;
+};
+
+export type IAnimeMoreInfo = {
+  aired: string;
+  description: string;
+  genres: string[];
+  japanese: string;
+  malscore: string;
+  premiered: string;
+  producers: string[];
+  status: string;
+  studios: string;
+  synonyms: string;
+};
+
+// COMMON
+
+export type IStats = {
+  duration: string;
+  episodes: IEpisodesType;
+  quality: string;
+  rating: string;
+  type: string;
+};
+
+export type IBasicCardContent = {
+  id: string;
+  name: string;
+  title?: string;
+  poster: string;
+};

@@ -11,14 +11,15 @@ const SpotlightCards = ({
   description,
   episodes,
   otherInfo,
+  id,
 }: ISpotLight) => {
   return (
     <div className=" select-none w-full h-[65vh] flex flex-col relative overflow-hidden">
       <div className=" mt-auto bg-background/10 ">
-        <p className=" font-jolly font-normal text-4xl text-btn-background">
+        <p className=" font-jolly font-normal text-2xl md:text-4xl text-btn-background">
           # SpotLight {rank}
         </p>
-        <h3 className=" relative text-title-xl font-extrabold font-poppins lg:w-[65%] line-clamp-2 ">
+        <h3 className=" text-title-xl font-extrabold lg:w-[65%] line-clamp-2 ">
           {name}
         </h3>
         <span className=" space-x-3">
@@ -26,7 +27,7 @@ const SpotlightCards = ({
             <Badge className=" my-2 px-3.5 bg-sBackground">{info}</Badge>
           ))}
         </span>
-        <p className=" w-[90%] lg:w-[55%] text-lg line-clamp-3 font-kaisei font-normal select-none">
+        <p className=" w-[100%] lg:w-[55%] text-lg line-clamp-3 font-kaisei font-normal select-none">
           {description}
         </p>
         <span className=" mt-10 flex gap-7">
@@ -41,7 +42,7 @@ const SpotlightCards = ({
               fill
               sizes="2000px"
               alt="top anime"
-              className="-z-10 object-cover"
+              className="object-cover -z-30"
               src={poster}
               priority
             />

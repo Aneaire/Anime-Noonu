@@ -37,8 +37,16 @@
     @apply flex items-center justify-center;
   }
 
+  .text-title-lg {
+    @apply text-3xl leading-none lg:text-4xl font-extrabold font-poppins line-clamp-2;
+  }
+
   .text-title-xl {
-    @apply text-4xl leading-none lg:text-[3.5rem] lg:font-extrabold font-poppins;
+    @apply text-4xl leading-none lg:text-[3.5rem] lg:font-extrabold font-poppins line-clamp-2;
+  }
+
+  .description {
+    @apply text-lg font-kaisei font-normal;
   }
 
   .radial-gradient {
@@ -51,6 +59,14 @@
     box-shadow: 23px -68px 47px -7px rgba(9, 29, 47, 1) inset;
     -webkit-box-shadow: 23px -68px 47px -7px rgba(9, 29, 47, 1) inset;
     -moz-box-shadow: 23px -68px 47px -7px rgba(9, 29, 47, 1) inset;
+  }
+
+  .section-container {
+    @apply section-padding max-w-7xl mx-auto;
+  }
+
+  .section-padding {
+    @apply px-2 md:px-3 lg:px-5;
   }
 }
 

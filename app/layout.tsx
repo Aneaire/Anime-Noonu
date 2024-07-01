@@ -52,10 +52,11 @@ export default function RootLayout({
       className={`${poppins.variable} ${kaisei.variable} ${montserrat.variable} ${jollyLodger.variable} `}
     >
       <body className="bg-background text-foreground">
-        <main className="min-h-screen flex min-w-screen overflow-x-hidden">
+        <main className="min-h-screen min-w-screen overflow-x-hidden">
           {/* <Sidebar /> */}
+          {/* <Header /> */}
           <QueryProvider>
-            <section className=" w-full px-2 lg:px-5 pb-5">{children}</section>
+            <section className=" w-full pb-5">{children}</section>
           </QueryProvider>
         </main>
       </body>

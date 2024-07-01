@@ -14,7 +14,7 @@ export async function GET(
   }
 
   try {
-    const res = await fetch(`${baseUrl}/anime/episodes/${id}`, {
+    const res = await fetch(`${baseUrl}/anime/info?id=${id}`, {
       method: "GET",
       headers: {
         "x-rapidapi-key": key,

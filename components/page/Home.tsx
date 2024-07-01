@@ -2,6 +2,7 @@
 
 import { useGetHomeAnime, useTest } from "@/utils/react-query/query";
 import emblaCarouselAutoplay from "embla-carousel-autoplay";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import AnimeCard from "../AnimeCard";
 import SpotlightCards from "../SpotLightAnime";
@@ -14,6 +15,8 @@ import {
 } from "../ui/carousel";
 
 const Home = () => {
+  const router = useRouter();
+
   const plugin = useRef(
     emblaCarouselAutoplay({ delay: 6000, stopOnInteraction: true })
   );
@@ -47,7 +50,11 @@ const Home = () => {
         <Carousel opts={{ loop: true }} className=" w-full">
           <CarouselContent>
             {homeAnime?.trendingAnimes?.map((anime) => (
-              <CarouselItem className=" basis-1.5/12" key={anime.id}>
+              <CarouselItem
+                onClick={() => router.push(`/anime/episodes/${anime.id}`)}
+                className=" basis-1.5/12"
+                key={anime.id}
+              >
                 <AnimeCard key={anime.id} {...anime} />
               </CarouselItem>
             ))}
