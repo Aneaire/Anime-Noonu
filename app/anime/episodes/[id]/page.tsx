@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useRef, useState } from "react";
+import ReactHlsPlayer from "react-hls-player";
 
 const Episodes = () => {
   const router = useParams();
@@ -90,7 +91,30 @@ const Episodes = () => {
               />
             ))}
           </div>
-          <div className=" w-full overflow-hidden rounded"></div>
+          <div className=" w-full overflow-hidden rounded">
+            {streamInfo && (
+              <ReactHlsPlayer
+                src={streamInfo.sources[0].url}
+                autoPlay={false}
+                controls={true}
+                width="100%"
+                height="auto"
+                playerRef={playerRef}
+                className="relative z-10"
+              >
+                {streamInfo?.tracks.map((track, index) => (
+                  <track
+                    key={index}
+                    kind={track.kind}
+                    label={track.label}
+                    src={track.file}
+                    srcLang={track.label}
+                    default={index === 0} // Make the first subtitle track the default one
+                  />
+                ))}
+              </ReactHlsPlayer>
+            )}
+          </div>
         </section>
       )}
     </div>
