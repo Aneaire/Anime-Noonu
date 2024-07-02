@@ -80,8 +80,8 @@ const Episodes = () => {
 
       {/* Episodes */}
       {episodes && (
-        <section className=" flex w-full mt-20 max-w-screen-xl mx-auto">
-          <div className=" section-padding space-y-2  w-[30%]">
+        <section className=" flex flex-col-reverse gap-4 md:flex-row w-full mt-5 md:mt-20 max-w-screen-xl mx-auto">
+          <div className=" md:section-padding space-y-2 md:w-[30%]">
             {episodes?.episodes.map((episode) => (
               <DisplayEpisodes
                 getStreamInfo={getStreamInfo}
@@ -103,10 +103,12 @@ const Episodes = () => {
                 autoPlay={false}
                 controls={true}
                 width="100%"
-                height="auto"
+                style={{ aspectRatio: "16/9" }}
                 playerRef={playerRef}
                 className="relative z-10"
                 crossOrigin="anonymous"
+                autoSave="true"
+                onCanPlay={() => playerRef.current?.play()}
               >
                 {streamInfo?.tracks.map((track, index) => {
                   const tracks = track.label === "English" && index;

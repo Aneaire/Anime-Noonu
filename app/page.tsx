@@ -1,4 +1,3 @@
-import Test from "@/components/Test";
 import { Logo, LogoTitle } from "@/components/icons";
 import Home from "@/components/page/Home";
 
@@ -24,7 +23,7 @@ export default async function Index() {
         <LogoTitle />
       </span>
       <Home />
-      <Test />
+      {/* <Test /> */}
     </div>
   );
 }

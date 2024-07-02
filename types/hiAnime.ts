@@ -2,7 +2,7 @@ export type IHiAnimeHome = {
   genres: IGenre[];
   latestEpisodeAnimes: ILatestEpisode[];
   spotlightAnimes: ISpotLight[];
-  top10Animes: ITop10[];
+  top10Animes: ITop10;
   topUpcomingAnimes: ITopUpcoming[];
   topAiringAnimes: ITopAiring[];
   trendingAnimes: ITrending[];

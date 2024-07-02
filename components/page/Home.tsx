@@ -45,11 +45,73 @@ const Home = () => {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className=" gap-5 pt-16 w-full">
-        Trending
+      <div className=" gap-5 pt-10 w-full">
+        <h1 className=" font-keisei text-2xl font-bold mb-1 tracking-wide">
+          Trending
+        </h1>
         <Carousel opts={{ loop: true }} className=" w-full">
           <CarouselContent>
             {homeAnime?.trendingAnimes?.map((anime) => (
+              <CarouselItem
+                onClick={() => router.push(`/anime/episodes/${anime.id}`)}
+                className=" basis-1.5/12"
+                key={anime.id}
+              >
+                <AnimeCard key={anime.id} {...anime} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className=" left-1 opacity-80 backdrop:blur-lg" />
+          <CarouselNext className=" right-1 opacity-80 backdrop:blur-lg" />
+        </Carousel>
+      </div>
+      <div className=" gap-5 pt-10 w-full">
+        <h1 className=" font-keisei text-2xl font-bold mb-1 tracking-wide">
+          New Episodes
+        </h1>
+        <Carousel opts={{ loop: true }} className=" w-full">
+          <CarouselContent>
+            {homeAnime?.latestEpisodeAnimes?.map((anime) => (
+              <CarouselItem
+                onClick={() => router.push(`/anime/episodes/${anime.id}`)}
+                className=" basis-1.5/12"
+                key={anime.id}
+              >
+                <AnimeCard key={anime.id} {...anime} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className=" left-1 opacity-80 backdrop:blur-lg" />
+          <CarouselNext className=" right-1 opacity-80 backdrop:blur-lg" />
+        </Carousel>
+      </div>
+      <div className=" gap-5 pt-10 w-full">
+        <h1 className=" font-keisei text-2xl font-bold mb-1 tracking-wide">
+          Top This Week
+        </h1>
+        <Carousel opts={{ loop: true }} className=" w-full">
+          <CarouselContent>
+            {homeAnime?.top10Animes.today?.map((anime) => (
+              <CarouselItem
+                onClick={() => router.push(`/anime/episodes/${anime.id}`)}
+                className=" basis-1.5/12"
+                key={anime.id}
+              >
+                <AnimeCard key={anime.id} {...anime} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className=" left-1 opacity-80 backdrop:blur-lg" />
+          <CarouselNext className=" right-1 opacity-80 backdrop:blur-lg" />
+        </Carousel>
+      </div>
+      <div className=" gap-5 pt-10 w-full">
+        <h1 className=" font-keisei text-2xl font-bold mb-1 tracking-wide">
+          Upcoming
+        </h1>
+        <Carousel opts={{ loop: true }} className=" w-full">
+          <CarouselContent>
+            {homeAnime?.topUpcomingAnimes?.map((anime) => (
               <CarouselItem
                 onClick={() => router.push(`/anime/episodes/${anime.id}`)}
                 className=" basis-1.5/12"

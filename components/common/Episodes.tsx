@@ -25,7 +25,7 @@ const DisplayEpisodes = ({
   return (
     <div
       onClick={() => handleClick()}
-      className={`max-w-[450px] rounded px-2 py-1 cursor-pointer ${
+      className={`md:max-w-[500px] w-full rounded px-2 py-1 cursor-pointer ${
         selected ? " bg-blue-900" : "bg-sBackground "
       }`}
     >
