@@ -23,7 +23,11 @@ const Episodes = () => {
 
   const { data: info, isLoading: infoLoading } = useGetInfo(id);
   const { data: episodes, isLoading: episodesLoading } = useGetEpisodes(id);
-  const { mutate: getStreamInfo, data: streamInfo } = useGetStreamInfo();
+  const {
+    mutate: getStreamInfo,
+    data: streamInfo,
+    isPending: streamLoading,
+  } = useGetStreamInfo();
 
   if (infoLoading && episodesLoading) {
     return <div>Loading...</div>;
@@ -76,7 +80,7 @@ const Episodes = () => {
 
       {/* Episodes */}
       {episodes && (
-        <section className=" flex w-full mt-20">
+        <section className=" flex w-full mt-20 max-w-screen-xl mx-auto">
           <div className=" section-padding space-y-2  w-[30%]">
             {episodes?.episodes.map((episode) => (
               <DisplayEpisodes
@@ -91,8 +95,9 @@ const Episodes = () => {
               />
             ))}
           </div>
-          <div className=" w-full overflow-hidden rounded">
-            {streamInfo && (
+          <div className=" relative w-full rounded">
+            {/* {streamInfo && <VideoPlayer streamInfo={streamInfo} />} */}
+            {streamInfo ? (
               <ReactHlsPlayer
                 src={streamInfo.sources[0].url}
                 autoPlay={false}
@@ -101,18 +106,33 @@ const Episodes = () => {
                 height="auto"
                 playerRef={playerRef}
                 className="relative z-10"
+                crossOrigin="anonymous"
               >
-                {streamInfo?.tracks.map((track, index) => (
-                  <track
-                    key={index}
-                    kind={track.kind}
-                    label={track.label}
-                    src={track.file}
-                    srcLang={track.label}
-                    default={index === 0} // Make the first subtitle track the default one
-                  />
-                ))}
+                {streamInfo?.tracks.map((track, index) => {
+                  const tracks = track.label === "English" && index;
+
+                  return (
+                    <track
+                      key={index}
+                      kind={track.kind}
+                      label={track.label}
+                      src={track.file}
+                      srcLang={track.label}
+                      default={index === tracks} // Make the first subtitle track the default one
+                    />
+                  );
+                })}
               </ReactHlsPlayer>
+            ) : (
+              <div
+                className={`flex-center bg-sBackground w-full aspect-video rounded ${
+                  streamLoading && "animate-pulse"
+                }`}
+              >
+                <h1 className="text-xl">
+                  {streamLoading ? "Loading..." : "Select an episode"}
+                </h1>
+              </div>
             )}
           </div>
         </section>

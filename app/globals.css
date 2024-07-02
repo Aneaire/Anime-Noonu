@@ -32,6 +32,23 @@
   }
 }
 
+/* VideoPlayer.css */
+.video-player-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-player-wrapper .react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+track {
+  @apply absolute left-0 bottom-0;
+}
+
 @layer utilities {
   .flex-center {
     @apply flex items-center justify-center;
