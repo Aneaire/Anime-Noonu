@@ -73,7 +73,9 @@ const Home = () => {
           <CarouselContent>
             {homeAnime?.latestEpisodeAnimes?.map((anime) => (
               <CarouselItem
-                onClick={() => router.push(`/anime/episodes/${anime.id}`)}
+                onClick={() =>
+                  router.push(`/anime/episodes/${anime.id}?watchNow=true`)
+                }
                 className=" basis-1.5/12"
                 key={anime.id}
               >

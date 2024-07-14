@@ -9,7 +9,7 @@ import PlainInput from "./PlainInput";
 
 const Search = () => {
   const router = useRouter();
-  const [search, setSearch] = useState(true);
+  const [search, setSearch] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [onSearch, setOnSearch] = useState(false);
 
@@ -21,15 +21,16 @@ const Search = () => {
     searchAnime(searchValue);
   };
 
-  console.log(data);
   return (
     <>
       <div
-        className={`flex absolute top-2 right-2 z-10 px-2 rounded-md ${
-          search ? " bg-background" : " bg-slate-700"
+        className={`flex absolute transition-all duration-500 top-2 right-2 z-10 px-2 rounded-md ${
+          search
+            ? " bg-background max-w-[300px] lg:max-w-600 w-3/6"
+            : " bg-slate-700 w-fit"
         }`}
       >
-        <span className=" flex items-center px-1 py-2">
+        <span className=" flex items-center cursor-pointer px-1 py-2">
           <SearchIcon
             className=" scale-140"
             onClick={() => setSearch(!search)}
@@ -41,8 +42,8 @@ const Search = () => {
             onChange={setSearchValue}
             onClick={() => setOnSearch(true)}
             placeholder="Search"
-            className={` px-0 w-0 placeholder:hidden duration-200 transition-all ease-linear ${
-              search && "px-2 w-full "
+            className={`px-0 w-0 placeholder:hidden duration-150 transition-all ease-in ${
+              search && "px-2 w-full"
             }`}
           />
         </form>
