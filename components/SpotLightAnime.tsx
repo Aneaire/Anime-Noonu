@@ -1,5 +1,6 @@
 import { ISpotLight } from "@/types/hiAnime";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { AccentBtn } from "./common/buttons";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -13,8 +14,9 @@ const SpotlightCards = ({
   otherInfo,
   id,
 }: ISpotLight) => {
+  const router = useRouter();
   return (
-    <div className=" select-none w-full h-[65vh] flex flex-col relative overflow-hidden">
+    <div className=" select-none w-full h-[65vh] min-h-[400px] md:min-h-[550px] flex flex-col relative overflow-hidden">
       <div className=" mt-auto bg-background/10 ">
         <p className=" font-jolly font-normal text-2xl md:text-4xl text-btn-background">
           # SpotLight {rank}
@@ -23,16 +25,31 @@ const SpotlightCards = ({
           {name}
         </h3>
         <span className=" space-x-3">
-          {otherInfo.map((info) => (
-            <Badge className=" my-2 px-3.5 bg-sBackground">{info}</Badge>
+          {otherInfo.map((info, index) => (
+            <Badge
+              key={index}
+              className={`my-2 px-3.5 bg-sBackground ${
+                index === 1 ? "bg-orange-700" : ""
+              }`}
+            >
+              {info}
+            </Badge>
           ))}
         </span>
         <p className=" w-[100%] lg:w-[55%] text-lg line-clamp-3 font-kaisei font-normal select-none">
           {description}
         </p>
         <span className=" mt-10 flex gap-7">
-          <AccentBtn>Watch Now</AccentBtn>
-          <Button className=" bg-sBackground font-montserrat font-medium text-lg px-7">
+          <AccentBtn
+            onClick={() => router.push(`/anime/episodes/${id}?watchNow=true`)}
+          >
+            Watch Now
+          </AccentBtn>
+
+          <Button
+            onClick={() => router.push(`/anime/episodes/${id}`)}
+            className=" bg-sBackground font-montserrat font-medium text-lg px-7"
+          >
             Episodes
           </Button>
         </span>

@@ -17,7 +17,7 @@ export async function GET() {
         "x-rapidapi-host": host,
       },
       next: {
-        revalidate: 604800,
+        revalidate: 72000, // 20 hours in seconds
       },
     });
 

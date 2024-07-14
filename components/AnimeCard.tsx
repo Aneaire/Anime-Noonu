@@ -26,7 +26,7 @@ const AnimeCard = ({ rank, name, poster, id }: any) => {
             alt={name}
             fill
             sizes="2000px"
-            onLoadingComplete={() => setImageLoaded(true)}
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
       </div>

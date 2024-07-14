@@ -20,6 +20,9 @@ export async function GET(
         "x-rapidapi-key": key,
         "x-rapidapi-host": host,
       },
+      next: {
+        revalidate: 60 * 60 * 24 * 30,
+      },
     });
 
     if (!res.ok) {

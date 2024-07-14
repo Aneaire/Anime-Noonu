@@ -9,7 +9,7 @@ const Header = () => {
     <div className=" flex items-center justify-between w-full h-fit px-5 bg-sBackground">
       <span
         onClick={() => router.push("/")}
-        className=" flex scale-75 lg:scale-85 -ml-3 items-center gap-5"
+        className=" flex scale-75 lg:scale-85 -ml-3 items-center gap-5 cursor-pointer"
       >
         <Logo />
         <LogoTitle />

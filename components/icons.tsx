@@ -25,6 +25,7 @@ export const LogoTitle = () => (
     height="31"
     viewBox="0 0 190 31"
     fill="none"
+    className=" hidden md:block"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path

@@ -6,6 +6,7 @@ import {
   getHomeAnime,
   getInfo,
   getStreamInfo,
+  searchAnime,
   test,
 } from "../hianimeAPI/api";
 import { QUERY_KEYS } from "./QUERY_KEYS";
@@ -35,6 +36,13 @@ export const useGetStreamInfo = () => {
   return useMutation({
     mutationFn: (id: string) => getStreamInfo(id),
     mutationKey: [QUERY_KEYS.GET_STREAM],
+  });
+};
+
+export const useSearchAnime = () => {
+  return useMutation({
+    mutationFn: (search: string) => searchAnime(search),
+    mutationKey: [QUERY_KEYS.SEARCH_ANIME],
   });
 };
 

@@ -66,6 +66,10 @@ track {
     @apply text-lg font-kaisei font-normal;
   }
 
+  .plain-input {
+    @apply border-none rounded-none focus-visible:ring-0 focus-visible:ring-offset-0;
+  }
+
   .radial-gradient {
     background: rgb(9, 29, 47);
     background: radial-gradient(
@@ -106,4 +110,15 @@ track {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

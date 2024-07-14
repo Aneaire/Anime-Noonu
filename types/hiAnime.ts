@@ -74,6 +74,16 @@ export type IEpisodesType = {
   dub: number;
 };
 
+export type ISearchResult = {
+  suggestions: {
+    id: string;
+    name: string;
+    poster: string;
+    jname: string;
+    moreInfo: string[];
+  }[];
+};
+
 // EPISODES
 
 export type IEpisodes = {

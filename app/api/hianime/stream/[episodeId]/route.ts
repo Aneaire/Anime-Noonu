@@ -24,6 +24,9 @@ export async function GET(
           "x-rapidapi-key": key,
           "x-rapidapi-host": host,
         },
+        next: {
+          revalidate: 2629800, // 1 month in seconds
+        },
       }
     );
 
@@ -41,5 +44,4 @@ export async function GET(
       sub,
     });
   }
-  return NextResponse.json({ episodeId, ep, server, sub });
 }
