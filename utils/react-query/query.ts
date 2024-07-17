@@ -36,6 +36,7 @@ export const useGetStreamInfo = () => {
   return useMutation({
     mutationFn: (id: string) => getStreamInfo(id),
     mutationKey: [QUERY_KEYS.GET_STREAM],
+    retry: 5,
   });
 };
 
