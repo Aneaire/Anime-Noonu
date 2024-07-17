@@ -13,14 +13,15 @@ export async function GET(
     return NextResponse.json({ error: "Missing API key or host" });
   }
 
-  console.log(id);
-
   try {
     const res = await fetch(`${baseUrl}/anime/search/suggest?q=${id}`, {
       method: "GET",
       headers: {
         "x-rapidapi-key": key,
         "x-rapidapi-host": host,
+      },
+      next: {
+        revalidate: 360000,
       },
     });
 

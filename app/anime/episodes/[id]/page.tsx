@@ -37,7 +37,7 @@ const Episodes = () => {
   console.log(watchNow);
 
   useEffect(() => {
-    if (episodes) {
+    if (episodes && watchNow == "true") {
       setSelectedEp(episodes.totalEpisodes);
     }
   }, [episodes]);
@@ -45,6 +45,8 @@ const Episodes = () => {
   if (infoLoading && episodesLoading) {
     return <Loading />;
   }
+
+  console.log(streamInfo);
 
   return (
     <div className=" w-full  pt-5 min-h-screen ">
@@ -112,33 +114,46 @@ const Episodes = () => {
             {/* {streamInfo && <VideoPlayer streamInfo={streamInfo} />} */}
             <div className="sticky top-0 left-0">
               {streamInfo ? (
-                <ReactHlsPlayer
-                  src={streamInfo.sources[0].url}
-                  autoPlay={false}
-                  controls={true}
-                  width="100%"
-                  style={{ aspectRatio: "16/9" }}
-                  playerRef={playerRef}
-                  className="relative z-10"
-                  crossOrigin="anonymous"
-                  autoSave="true"
-                  onCanPlay={() => playerRef.current?.play()}
-                >
-                  {streamInfo?.tracks.map((track, index) => {
-                    const tracks = track.label === "English" && index;
+                "sources" in streamInfo ? (
+                  <ReactHlsPlayer
+                    src={streamInfo.sources[0].url}
+                    autoPlay={false}
+                    controls={true}
+                    width="100%"
+                    style={{ aspectRatio: "16/9" }}
+                    playerRef={playerRef}
+                    className="relative z-10"
+                    crossOrigin="anonymous"
+                    autoSave="true"
+                    onCanPlay={() => playerRef.current?.play()}
+                  >
+                    {streamInfo?.tracks.map((track, index) => {
+                      const tracks = track.label === "English" && index;
 
-                    return (
-                      <track
-                        key={index}
-                        kind={track.kind}
-                        label={track.label}
-                        src={track.file}
-                        srcLang={track.label}
-                        default={index === tracks} // Make the first subtitle track the default one
-                      />
-                    );
-                  })}
-                </ReactHlsPlayer>
+                      return (
+                        <track
+                          className=""
+                          key={index}
+                          kind={track.kind}
+                          label={track.label}
+                          src={track.file}
+                          srcLang={track.label}
+                          default={index === tracks} // Make the first subtitle track the default one
+                        />
+                      );
+                    })}
+                  </ReactHlsPlayer>
+                ) : (
+                  <div
+                    className={`flex-center bg-sBackground w-full aspect-video rounded ${
+                      streamLoading && "animate-pulse"
+                    }`}
+                  >
+                    <h1 className="text-xl bg-red-500 px-2 rounded">
+                      No stream available for this episode 😜
+                    </h1>
+                  </div>
+                )
               ) : (
                 <div
                   className={`flex-center bg-sBackground w-full aspect-video rounded ${
